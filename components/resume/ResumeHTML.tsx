@@ -13,7 +13,8 @@ const formatUrl = (url?: string | null, origin = ""): string | null => {
   if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("mailto:") || url.startsWith("tel:")) {
     return url;
   }
-  return `${origin}${url.startsWith("/") ? "" : "/"}${url}`;
+  const cleanUrl = url.startsWith("/") ? url : `/${url}`;
+  return `${origin}/Portfolio${cleanUrl}`;
 };
 
 export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {

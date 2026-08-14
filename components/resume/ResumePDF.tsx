@@ -284,7 +284,8 @@ const resolveUrl = (url: string | undefined | null, origin: string): string | nu
   if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("mailto:") || url.startsWith("tel:")) {
     return url;
   }
-  return `${origin}${url.startsWith("/") ? "" : "/"}${url}`;
+  const cleanUrl = url.startsWith("/") ? url : `/${url}`;
+  return `${origin}/Portfolio${cleanUrl}`;
 };
 
 interface ResumePDFProps {

@@ -24,6 +24,14 @@ export function generateStaticParams() {
 // Set NEXT_PUBLIC_SITE_URL at build time to your deployed domain.
 const SITE_ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || "").replace(/\/$/, "");
 
+function removeDiacritics(str: string): string {
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D");
+}
+
 export async function GET(_request: Request, { params }: { params: Promise<{ cvType: string }> }) {
   const { cvType: cvTypeParam } = await params;
   const cvType = cvTypeParam.replace(/\.pdf$/, "");
@@ -36,7 +44,8 @@ export async function GET(_request: Request, { params }: { params: Promise<{ cvT
     <ResumePDF data={data} type={cvType} origin={SITE_ORIGIN} />
   );
 
-  const filename = `Resume_${cvType}_${data.personal.name.replace(/\s+/g, "_")}.pdf`;
+  const safeName = removeDiacritics(data.personal.name).replace(/\s+/g, "_");
+  const filename = `Resume_${cvType}_${safeName}.pdf`;
 
   return new Response(new Uint8Array(buffer), {
     headers: {

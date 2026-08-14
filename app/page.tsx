@@ -47,7 +47,7 @@ function ResumeContent() {
   // app/api/resume/pdf/[cvType]/route.tsx) — no query-driven server logic.
   // The `.pdf` suffix is baked into the exported filename so static hosts
   // can infer `Content-Type: application/pdf` from the extension alone.
-  const pdfSrc = `/api/resume/pdf/${encodeURIComponent(cvType)}.pdf`;
+  const pdfSrc = `/Portfolio/api/resume/pdf/${encodeURIComponent(cvType)}.pdf`;
   const downloadFilename = `Resume_${cvType}_${currentData.personal.name.replace(/\s+/g, "_")}.pdf`;
 
   const handleTypeChange = (typeId: string) => {
