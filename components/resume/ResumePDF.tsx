@@ -279,13 +279,15 @@ const styles = StyleSheet.create({
   },
 });
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const resolveUrl = (url: string | undefined | null, origin: string): string | null => {
   if (!url) return null;
   if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("mailto:") || url.startsWith("tel:")) {
     return url;
   }
   const cleanUrl = url.startsWith("/") ? url : `/${url}`;
-  return `${origin}/Portfolio${cleanUrl}`;
+  return `${origin}${BASE_PATH}${cleanUrl}`;
 };
 
 interface ResumePDFProps {

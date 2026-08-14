@@ -1,12 +1,14 @@
 import type { NextConfig } from "next";
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const nextConfig: NextConfig = {
   // Static HTML export: `next build` emits a self-contained `out/` folder
   // (HTML/CSS/JS only) instead of a Node server. No API routes with
   // request-dependent logic, middleware, or ISR are allowed — the resume
   // PDF route below is pre-rendered per `cvType` at build time instead.
   output: "export",
-  basePath: "/Portfolio",
+  basePath: BASE_PATH || undefined,
   images: {
     unoptimized: true,
   },
