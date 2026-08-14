@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
   // request-dependent logic, middleware, or ISR are allowed — the resume
   // PDF route below is pre-rendered per `cvType` at build time instead.
   output: "export",
+  basePath: "/Portfolio",
+  images: {
+    unoptimized: true,
+  },
 
   // Keep the optional `canvas` dependency of @react-pdf/renderer out of the
   // build-time bundle — it's a native module we don't need for text/SVG PDFs.

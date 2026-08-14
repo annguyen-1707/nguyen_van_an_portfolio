@@ -3,13 +3,13 @@ import { notFound } from "next/navigation";
 import ProjectPageShell from "@/components/projects/ProjectPageShell";
 import { findProject } from "@/lib/resume/data";
 
-const PROJECT_TITLE = "Project Name";
+const PROJECT_TITLE = "Personalized Japanese Learning System (FU OHAYO)";
 
 export const metadata: Metadata = {
   title: PROJECT_TITLE,
 };
 
-export default function ProjectNamePage() {
+export default function FuOhayoPage() {
   const project = findProject(PROJECT_TITLE);
   if (!project) notFound();
 
@@ -22,8 +22,7 @@ export default function ProjectNamePage() {
     <ProjectPageShell
       eyebrow="Personal Project"
       title={project.title}
-      // TODO: replace with a real project description.
-      description="Describe the problem this project solves, your approach, and the outcome."
+      description="A web-based Japanese learning platform supporting personalized learning paths integrated with AI to practice speaking, pronunciation, grammar, and vocabulary."
       meta={[
         project.role && { label: "Role", value: project.role },
         project.period && { label: "Timeline", value: project.period },
@@ -31,7 +30,7 @@ export default function ProjectNamePage() {
       ].filter((m): m is { label: string; value: string } => Boolean(m))}
       actions={actions}
       highlights={project.achievements}
-      footerNote={`${PROJECT_TITLE} · Your Portfolio`}
+      footerNote={`${PROJECT_TITLE} · Nguyễn Văn An Portfolio`}
     />
   );
 }
