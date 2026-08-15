@@ -19,10 +19,10 @@ export function generateStaticParams() {
   return Object.keys(resumes).map((cvType) => ({ cvType: `${cvType}.pdf` }));
 }
 
-// Absolute origin used to resolve relative links (e.g. project pages) inside
-// the PDF, since a downloaded file has no browser location to resolve against.
-// Set NEXT_PUBLIC_SITE_URL at build time to your deployed domain.
-const SITE_ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || "").replace(/\/$/, "");
+const SITE_ORIGIN = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : "https://nguyen-van-an-portfolio.vercel.app")
+).replace(/\/$/, "");
 
 function removeDiacritics(str: string): string {
   return str

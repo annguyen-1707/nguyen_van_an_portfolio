@@ -1,6 +1,7 @@
 import { HiExternalLink, HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import type { ResumeData } from "@/lib/resume/types";
+import Link from "next/link";
 
 interface ResumeHTMLProps {
   data: ResumeData;
@@ -181,17 +182,26 @@ export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {
 
             {exp.projects &&
               exp.projects.map((project, pIdx) => {
-                const projectUrl = formatUrl(
-                  project.link || project.url || project.githubUrl || project.liveUrl || project.evidence,
-                  origin
-                );
+                const rawUrl = project.link || project.url || project.githubUrl || project.liveUrl || project.evidence;
+                const isInternal = rawUrl && (rawUrl.startsWith("/") || rawUrl.startsWith("projects/"));
+                const projectUrl = formatUrl(rawUrl, origin);
 
                 return (
                   <div key={pIdx} className="mt-2 ml-2 pl-2 border-l-2 border-gray-200">
                     <div className="flex justify-between items-center">
-                      {projectUrl ? (
+                      {!rawUrl ? (
+                        <span className="font-bold text-gray-900 text-xs">{project.name}</span>
+                      ) : isInternal && !origin ? (
+                        <Link
+                          href={rawUrl.startsWith("/") ? rawUrl : `/${rawUrl}`}
+                          className="font-bold text-blue-600 hover:underline flex items-center gap-1 text-xs"
+                        >
+                          <span>{project.name}</span>
+                          <HiExternalLink className="w-3 h-3 inline-block" />
+                        </Link>
+                      ) : (
                         <a
-                          href={projectUrl}
+                          href={projectUrl || "#"}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="font-bold text-blue-600 hover:underline flex items-center gap-1 text-xs"
@@ -199,8 +209,6 @@ export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {
                           <span>{project.name}</span>
                           <HiExternalLink className="w-3 h-3 inline-block" />
                         </a>
-                      ) : (
-                        <span className="font-bold text-gray-900 text-xs">{project.name}</span>
                       )}
                       {project.period && <span className="text-[11px] text-gray-500">{project.period}</span>}
                     </div>
@@ -230,15 +238,26 @@ export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {
         </h2>
         {data.projects.map((project, index) => {
           const rawUrl = project.evidence || project.link || project.url || project.githubUrl || project.liveUrl;
+          const isInternal = rawUrl && (rawUrl.startsWith("/") || rawUrl.startsWith("projects/"));
           const projectUrl = formatUrl(rawUrl, origin);
 
           return (
             <div key={index} className="mb-3">
               <div className="flex justify-between items-baseline">
                 <div className="flex items-center gap-1.5">
-                  {projectUrl ? (
+                  {!rawUrl ? (
+                    <span className="font-bold text-gray-900 text-sm">{project.title}</span>
+                  ) : isInternal && !origin ? (
+                    <Link
+                      href={rawUrl.startsWith("/") ? rawUrl : `/${rawUrl}`}
+                      className="font-bold text-gray-900 hover:text-blue-600 hover:underline flex items-center gap-1 text-sm"
+                    >
+                      <span>{project.title}</span>
+                      <HiExternalLink className="w-3.5 h-3.5 text-blue-600 inline-block" />
+                    </Link>
+                  ) : (
                     <a
-                      href={projectUrl}
+                      href={projectUrl || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-bold text-gray-900 hover:text-blue-600 hover:underline flex items-center gap-1 text-sm"
@@ -246,8 +265,6 @@ export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {
                       <span>{project.title}</span>
                       <HiExternalLink className="w-3.5 h-3.5 text-blue-600 inline-block" />
                     </a>
-                  ) : (
-                    <span className="font-bold text-gray-900 text-sm">{project.title}</span>
                   )}
                 </div>
                 <span className="text-xs text-gray-600">
