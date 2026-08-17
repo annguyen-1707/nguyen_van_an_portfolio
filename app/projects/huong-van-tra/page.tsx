@@ -29,6 +29,19 @@ export default function HuongVanTraPage() {
         project.location && { label: "Location", value: project.location },
       ].filter((m): m is { label: string; value: string } => Boolean(m))}
       actions={actions}
+      techStack={[
+        "Spring Boot",
+        "Spring Cloud",
+        "Spring Security",
+        "Keycloak",
+        "OAuth2",
+        "MySQL",
+        "Kafka",
+        "Redis",
+        "ReactJS",
+        "TypeScript",
+        "Tailwind CSS",
+      ]}
       highlights={project.achievements}
       footerNote={`${PROJECT_TITLE} · Nguyễn Văn An Portfolio`}
     />
