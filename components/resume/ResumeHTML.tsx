@@ -128,33 +128,19 @@ export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {
         </section>
       )}
 
-      {/* Education Section */}
+      {/* Skills Section */}
       <section className="mb-4">
         <h2 className="text-xs font-bold uppercase tracking-wider text-gray-900 border-b border-gray-900 pb-1 mb-2">
-          Education
+          Skills
         </h2>
-        {data.education.map((edu, index) => (
-          <div key={index} className="mb-2">
-            <div className="flex justify-between items-baseline">
-              <span className="font-bold text-gray-900 text-sm">{edu.institution}</span>
-              <span className="text-xs italic text-gray-600">
-                {edu.startYear ? `${edu.startYear} – ` : ""}
-                {edu.graduationYear} | {edu.location}
-              </span>
+        <div className="space-y-1 text-xs">
+          {data.skills.map((skillCat, index) => (
+            <div key={index}>
+              <span className="font-bold text-gray-900">{skillCat.category}: </span>
+              <span className="text-gray-800">{skillCat.items.join(", ")}</span>
             </div>
-            <div className="text-xs italic text-gray-700">
-              {edu.degree}
-              {edu.gpa ? `. GPA: ${edu.gpa}` : ""}
-            </div>
-            {edu.bullets && edu.bullets.length > 0 && (
-              <ul className="list-disc list-inside ml-2 text-xs text-gray-800 space-y-0.5 mt-1">
-                {edu.bullets.map((bullet, idx) => (
-                  <li key={idx}>{bullet}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
+          ))}
+        </div>
       </section>
 
       {/* Experience Section */}
@@ -173,11 +159,27 @@ export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {
             <div className="text-xs italic text-gray-700 mb-1">{exp.position}</div>
 
             {exp.achievements && (
-              <ul className="list-disc list-inside ml-2 text-xs text-gray-800 space-y-0.5">
-                {exp.achievements.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ul>
+              <div className="space-y-0.5">
+                {exp.achievements.map((item, idx) => {
+                  if (item.startsWith("Tech:") || item.startsWith("Technologies:")) {
+                    const colonIdx = item.indexOf(":");
+                    const label = item.slice(0, colonIdx + 1);
+                    const content = item.slice(colonIdx + 1);
+                    return (
+                      <div key={idx} className="text-xs text-gray-800 mb-0.5">
+                        <span className="font-semibold text-gray-900">{label}</span>
+                        <span>{content}</span>
+                      </div>
+                    );
+                  }
+                  return (
+                    <div key={idx} className="flex items-start ml-2 text-xs text-gray-800">
+                      <span className="mr-1.5 select-none text-gray-800">•</span>
+                      <span className="flex-1">{item}</span>
+                    </div>
+                  );
+                })}
+              </div>
             )}
 
             {exp.projects &&
@@ -194,20 +196,20 @@ export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {
                       ) : isInternal && !origin ? (
                         <Link
                           href={rawUrl.startsWith("/") ? rawUrl : `/${rawUrl}`}
-                          className="font-bold text-blue-600 hover:underline flex items-center gap-1 text-xs"
+                          className="font-bold text-gray-900 hover:text-blue-600 hover:underline flex items-center gap-1 text-xs"
                         >
                           <span>{project.name}</span>
-                          <HiExternalLink className="w-3 h-3 inline-block" />
+                          <HiExternalLink className="w-3 h-3 text-blue-600 inline-block" />
                         </Link>
                       ) : (
                         <a
                           href={projectUrl || "#"}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-bold text-blue-600 hover:underline flex items-center gap-1 text-xs"
+                          className="font-bold text-gray-900 hover:text-blue-600 hover:underline flex items-center gap-1 text-xs"
                         >
                           <span>{project.name}</span>
-                          <HiExternalLink className="w-3 h-3 inline-block" />
+                          <HiExternalLink className="w-3 h-3 text-blue-600 inline-block" />
                         </a>
                       )}
                       {project.period && <span className="text-[11px] text-gray-500">{project.period}</span>}
@@ -218,11 +220,27 @@ export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {
                       </div>
                     )}
                     {project.achievements && (
-                      <ul className="list-disc list-inside ml-2 text-xs text-gray-800 space-y-0.5">
-                        {project.achievements.map((item, idx) => (
-                          <li key={idx}>{item}</li>
-                        ))}
-                      </ul>
+                      <div className="space-y-0.5">
+                        {project.achievements.map((item, idx) => {
+                          if (item.startsWith("Tech:") || item.startsWith("Technologies:")) {
+                            const colonIdx = item.indexOf(":");
+                            const label = item.slice(0, colonIdx + 1);
+                            const content = item.slice(colonIdx + 1);
+                            return (
+                              <div key={idx} className="text-xs text-gray-800 mb-0.5">
+                                <span className="font-semibold text-gray-900">{label}</span>
+                                <span>{content}</span>
+                              </div>
+                            );
+                          }
+                          return (
+                            <div key={idx} className="flex items-start ml-2 text-xs text-gray-800">
+                              <span className="mr-1.5 select-none text-gray-800">•</span>
+                              <span className="flex-1">{item}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
                     )}
                   </div>
                 );
@@ -275,30 +293,60 @@ export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {
               {project.role && <div className="text-xs italic text-gray-700 mb-1">{project.role}</div>}
 
               {project.achievements && (
-                <ul className="list-disc list-inside ml-2 text-xs text-gray-800 space-y-0.5">
-                  {project.achievements.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
+                <div className="space-y-0.5">
+                  {project.achievements.map((item, idx) => {
+                    if (item.startsWith("Tech:") || item.startsWith("Technologies:")) {
+                      const colonIdx = item.indexOf(":");
+                      const label = item.slice(0, colonIdx + 1);
+                      const content = item.slice(colonIdx + 1);
+                      return (
+                        <div key={idx} className="text-xs text-gray-800 mb-0.5">
+                          <span className="font-semibold text-gray-900">{label}</span>
+                          <span>{content}</span>
+                        </div>
+                      );
+                    }
+                    return (
+                      <div key={idx} className="flex items-start ml-2 text-xs text-gray-800">
+                        <span className="mr-1.5 select-none text-gray-800">•</span>
+                        <span className="flex-1">{item}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               )}
             </div>
           );
         })}
       </section>
 
-      {/* Technical Skills Section */}
+      {/* Education Section */}
       <section className="mb-4">
         <h2 className="text-xs font-bold uppercase tracking-wider text-gray-900 border-b border-gray-900 pb-1 mb-2">
-          Skills
+          Education
         </h2>
-        <div className="space-y-1 text-xs">
-          {data.skills.map((skillCat, index) => (
-            <div key={index}>
-              <span className="font-bold text-gray-900">{skillCat.category}: </span>
-              <span className="text-gray-800">{skillCat.items.join(", ")}</span>
+        {data.education.map((edu, index) => (
+          <div key={index} className="mb-2">
+            <div className="flex justify-between items-baseline">
+              <span className="font-bold text-gray-900 text-sm">{edu.institution}</span>
+              <span className="text-xs italic text-gray-600">
+                {edu.startYear ? `${edu.startYear} – ` : ""}
+                {edu.graduationYear} | {edu.location}
+              </span>
             </div>
-          ))}
-        </div>
+            <div className="text-xs italic text-gray-700">
+              {edu.degree}
+              {edu.gpa ? `. GPA: ${edu.gpa}` : ""}
+            </div>
+            {edu.bullets && edu.bullets.length > 0 && (
+              <ul className="list-disc list-inside ml-2 text-xs text-gray-800 space-y-0.5 mt-1">
+                {edu.bullets.map((bullet, idx) => (
+                  <li key={idx}>{bullet}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
       </section>
 
       {/* Coding Profiles Section */}

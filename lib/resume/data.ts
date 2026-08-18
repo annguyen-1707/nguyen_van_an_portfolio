@@ -28,7 +28,7 @@ const defaultResume: ResumeData = {
   experience: [
     {
       company: "Công ty CP Đầu tư Công nghệ Hoàng Huy",
-      position: "Intern Developer",
+      position: "Developer",
       location: "Hà Nội, Việt Nam",
       startDate: "July 2025",
       endDate: "January 2026",
@@ -38,9 +38,8 @@ const defaultResume: ResumeData = {
       projects: [
         {
           name: "D-office Mobile Application",
-          role: "React Native Developer",
+          role: "Mobile Developer",
           period: "July 2025 – January 2026",
-          techStack: ["React Native"],
           link: "https://play.google.com/store/apps/details?id=udsjsc.doffice",
           achievements: [
             "Developed and redesigned mobile UI based on Figma designs using React Native.",
@@ -61,26 +60,38 @@ const defaultResume: ResumeData = {
   ],
   skills: [
     {
-      category: "Core Skills",
+      category: "Back-end stack",
       items: [
-        "Spring Boot",
-        "NodeJS",
-        "ReactJS",
-        "React Native",
-        "Flutter",
         "Java",
-        "JavaScript",
+        "Spring Boot",
+        "Multithreading",
+        "Spring WebFlux",
+        "Spring Security",
+        "Spring Data JPA",
+        "REST API",
+        "Microservices",
+        "JWT",
+        "OAuth2",
         "Kafka",
-        "Microservices architecture",
-        "Microsoft SQL Server",
-        "PostgreSQL",
-        "Redis",
-        "Docker",
-        "Github",
+        "Resilience4J",
+        "FeignClient",
+        "WebSocket",
+        "SSE",
+        "NodeJs",
       ],
     },
-    { category: "Soft Skills", items: ["Communication", "Teamwork"] },
-    { category: "Languages", items: ["English (Intermediate)"] },
+    {
+      category: "Front-end stack",
+      items: ["React", "JavaScript", "TypeScript", "HTML/CSS", "Bootstrap"],
+    },
+    {
+      category: "Database",
+      items: ["MySQL", "Oracle", "SQL Server", "MongoDB (basic)", "Redis"],
+    },
+    {
+      category: "Tools/DevOps",
+      items: ["Git", "Maven/Gradle", "Docker", "Postman", "Swagger", "Keycloak"],
+    },
   ],
   projects: [
     {
@@ -91,10 +102,11 @@ const defaultResume: ResumeData = {
       githubUrl: "https://github.com/ThaiDuisss/Huong-Van-Tra-",
       url: "/projects/huong-van-tra",
       achievements: [
-        "Developed a Microservices-based Tea Chain Management and POS Sales System supporting real-time order processing, Bill of Materials (BOM) management, inventory control, and revenue reporting across multiple branches.",
-        "Built the Bill of Materials (BOM) management module and automated production workflows that deduct raw material inventory from corresponding shelf locations.",
-        "Developed the POS web application for sales and branch inventory management.",
-        "Technologies: Spring Boot, Spring Cloud (Gateway, Discovery), Spring Security, Keycloak, OAuth2, Spring Data JPA, Hibernate, MySQL, Flyway, Kafka (Avro), Redis, ReactJS, TypeScript, Tailwind CSS.",
+        "Tech: Spring Boot • Spring Cloud • Spring Security • Keycloak • MySQL • Kafka • Debezium • Redis • SSE • Swagger",
+        "Developed a multi-branch POS and management platform using a microservices architecture.",
+        "Implemented centralized authentication and authorization using Keycloak, Spring Security, and API Gateway, with trusted user context securely propagated to internal services.",
+        "Integrated Redis caching with TTL for frequently accessed data and idempotency management, reducing repeated database queries and improving API response performance.",
+        "Applied Saga Orchestration, Kafka, Debezium CDC, Transactional Outbox, and Inbox patterns to ensure reliable and idempotent distributed processing for optimizing order and payment flows.",
       ],
     },
     {
@@ -104,11 +116,11 @@ const defaultResume: ResumeData = {
       githubUrl: "https://github.com/annguyen-1707/Personalized-Learning-System",
       url: "/projects/fu-ohayo",
       achievements: [
+        "Tech: Spring Boot • MySQL • ReactJS • Azure Speech Service • Gemini AI • VNPay",
         "Created a web-based Japanese learning platform supporting personalized learning paths integrated with AI for speaking and vocabulary practice.",
         "Developed security and authentication features using Spring Security and JWT.",
         "Implemented speaking practice and pronunciation scoring using Azure Speech Service.",
         "Integrated Spring AI and Gemini AI to generate exercises and quiz questions based on vocabulary and grammar.",
-        "Technologies: Spring Boot, MySQL, ReactJS, Azure Speech Service, Gemini AI, VNPay.",
       ],
     },
   ],

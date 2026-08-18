@@ -372,36 +372,19 @@ const ResumePDF = ({ data, type = "default", origin = "" }: ResumePDFProps) => (
         </View>
       )}
 
-      {/* Education Section */}
+      {/* Skills Section */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Education</Text>
-        {data.education.map((edu, index) => (
-          <View key={index} style={styles.educationItem}>
-            <View style={styles.educationRow}>
-              <Text style={styles.institutionName}>{edu.institution}</Text>
-              <Text style={styles.locationDate}>
-                {edu.startYear ? `${edu.startYear} – ` : ""}
-                {edu.graduationYear} | {edu.location}
+        <Text style={styles.sectionTitle}>Skills</Text>
+        <View style={styles.skillsContainer}>
+          {data.skills.map((skillCategory, index) => (
+            <View key={index} style={{ marginBottom: 2 }}>
+              <Text>
+                <Text style={styles.skillCategory}>{skillCategory.category}: </Text>
+                <Text style={styles.skillItems}>{skillCategory.items.join(", ")}</Text>
               </Text>
             </View>
-            <View style={styles.degreeRow}>
-              <Text style={styles.degree}>
-                {edu.degree}
-                {edu.gpa ? `. GPA: ${edu.gpa}` : ""}
-              </Text>
-            </View>
-            {edu.bullets && edu.bullets.length > 0 && (
-              <View style={styles.bulletList}>
-                {edu.bullets.map((bullet, idx) => (
-                  <View key={idx} style={styles.bulletItem}>
-                    <Text style={styles.bullet}>•</Text>
-                    <Text style={styles.bulletText}>{bullet}</Text>
-                  </View>
-                ))}
-              </View>
-            )}
-          </View>
-        ))}
+          ))}
+        </View>
       </View>
 
       {/* Experience Section */}
@@ -420,12 +403,27 @@ const ResumePDF = ({ data, type = "default", origin = "" }: ResumePDFProps) => (
             </View>
             {exp.achievements && (
               <View style={styles.bulletList}>
-                {exp.achievements.map((achievement, idx) => (
-                  <View key={idx} style={styles.bulletItem}>
-                    <Text style={styles.bullet}>•</Text>
-                    <Text style={styles.bulletText}>{achievement}</Text>
-                  </View>
-                ))}
+                {exp.achievements.map((achievement, idx) => {
+                  if (achievement.startsWith("Tech:") || achievement.startsWith("Technologies:")) {
+                    const colonIdx = achievement.indexOf(":");
+                    const label = achievement.slice(0, colonIdx + 1);
+                    const content = achievement.slice(colonIdx + 1);
+                    return (
+                      <View key={idx} style={{ marginBottom: 1, marginLeft: -8 }}>
+                        <Text style={{ fontSize: 10, color: "#000000" }}>
+                          <Text style={{ fontWeight: "bold" }}>{label}</Text>
+                          {content}
+                        </Text>
+                      </View>
+                    );
+                  }
+                  return (
+                    <View key={idx} style={styles.bulletItem}>
+                      <Text style={styles.bullet}>•</Text>
+                      <Text style={styles.bulletText}>{achievement}</Text>
+                    </View>
+                  );
+                })}
               </View>
             )}
             {exp.projects &&
@@ -441,12 +439,12 @@ const ResumePDF = ({ data, type = "default", origin = "" }: ResumePDFProps) => (
                       {formattedUrl ? (
                         <Link src={formattedUrl} style={{ textDecoration: "none" }}>
                           <View style={{ flexDirection: "row", alignItems: "center", gap: 4 }}>
-                            <Text style={{ fontSize: 10, fontWeight: "bold", color: "#0066cc" }}>{project.name}</Text>
+                            <Text style={{ fontSize: 10, fontWeight: "bold", color: "#000000" }}>{project.name}</Text>
                             <ExternalLinkIcon />
                           </View>
                         </Link>
                       ) : (
-                        <Text style={{ fontSize: 10, fontWeight: "bold" }}>{project.name}</Text>
+                        <Text style={{ fontSize: 10, fontWeight: "bold", color: "#000000" }}>{project.name}</Text>
                       )}
                       <Text style={{ fontSize: 9, color: "#666" }}>{project.period}</Text>
                     </View>
@@ -455,12 +453,27 @@ const ResumePDF = ({ data, type = "default", origin = "" }: ResumePDFProps) => (
                     </Text>
                     <View style={styles.bulletList}>
                       {project.achievements &&
-                        project.achievements.map((achievement, idx) => (
-                          <View key={idx} style={styles.bulletItem}>
-                            <Text style={styles.bullet}>•</Text>
-                            <Text style={styles.bulletText}>{achievement}</Text>
-                          </View>
-                        ))}
+                        project.achievements.map((achievement, idx) => {
+                          if (achievement.startsWith("Tech:") || achievement.startsWith("Technologies:")) {
+                            const colonIdx = achievement.indexOf(":");
+                            const label = achievement.slice(0, colonIdx + 1);
+                            const content = achievement.slice(colonIdx + 1);
+                            return (
+                              <View key={idx} style={{ marginBottom: 1, marginLeft: -8 }}>
+                                <Text style={{ fontSize: 10, color: "#000000" }}>
+                                  <Text style={{ fontWeight: "bold" }}>{label}</Text>
+                                  {content}
+                                </Text>
+                              </View>
+                            );
+                          }
+                          return (
+                            <View key={idx} style={styles.bulletItem}>
+                              <Text style={styles.bullet}>•</Text>
+                              <Text style={styles.bulletText}>{achievement}</Text>
+                            </View>
+                          );
+                        })}
                     </View>
                   </View>
                 );
@@ -503,31 +516,63 @@ const ResumePDF = ({ data, type = "default", origin = "" }: ResumePDFProps) => (
               )}
               <View style={styles.bulletList}>
                 {project.achievements &&
-                  project.achievements.map((achievement, idx) => (
-                    <View key={idx} style={styles.bulletItem}>
-                      <Text style={styles.bullet}>•</Text>
-                      <Text style={styles.bulletText}>{achievement}</Text>
-                    </View>
-                  ))}
+                  project.achievements.map((achievement, idx) => {
+                    if (achievement.startsWith("Tech:") || achievement.startsWith("Technologies:")) {
+                      const colonIdx = achievement.indexOf(":");
+                      const label = achievement.slice(0, colonIdx + 1);
+                      const content = achievement.slice(colonIdx + 1);
+                      return (
+                        <View key={idx} style={{ marginBottom: 1, marginLeft: -8 }}>
+                          <Text style={{ fontSize: 10, color: "#000000" }}>
+                            <Text style={{ fontWeight: "bold" }}>{label}</Text>
+                            {content}
+                          </Text>
+                        </View>
+                      );
+                    }
+                    return (
+                      <View key={idx} style={styles.bulletItem}>
+                        <Text style={styles.bullet}>•</Text>
+                        <Text style={styles.bulletText}>{achievement}</Text>
+                      </View>
+                    );
+                  })}
               </View>
             </View>
           );
         })}
       </View>
 
-      {/* Skills Section */}
+      {/* Education Section */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Skills</Text>
-        <View style={styles.skillsContainer}>
-          {data.skills.map((skillCategory, index) => (
-            <View key={index} style={{ marginBottom: 2 }}>
-              <Text>
-                <Text style={styles.skillCategory}>{skillCategory.category}: </Text>
-                <Text style={styles.skillItems}>{skillCategory.items.join(", ")}</Text>
+        <Text style={styles.sectionTitle}>Education</Text>
+        {data.education.map((edu, index) => (
+          <View key={index} style={styles.educationItem}>
+            <View style={styles.educationRow}>
+              <Text style={styles.institutionName}>{edu.institution}</Text>
+              <Text style={styles.locationDate}>
+                {edu.startYear ? `${edu.startYear} – ` : ""}
+                {edu.graduationYear} | {edu.location}
               </Text>
             </View>
-          ))}
-        </View>
+            <View style={styles.degreeRow}>
+              <Text style={styles.degree}>
+                {edu.degree}
+                {edu.gpa ? `. GPA: ${edu.gpa}` : ""}
+              </Text>
+            </View>
+            {edu.bullets && edu.bullets.length > 0 && (
+              <View style={styles.bulletList}>
+                {edu.bullets.map((bullet, idx) => (
+                  <View key={idx} style={styles.bulletItem}>
+                    <Text style={styles.bullet}>•</Text>
+                    <Text style={styles.bulletText}>{bullet}</Text>
+                  </View>
+                ))}
+              </View>
+            )}
+          </View>
+        ))}
       </View>
 
       {/* Coding Profiles Section */}

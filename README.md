@@ -41,7 +41,7 @@ npm run dev
   `@react-pdf/renderer` this app doesn't need) for both Webpack and
   Turbopack builds.
 - The PDF route runs on the Node.js runtime (`export const runtime =
-  "nodejs"`) since `@react-pdf/renderer` needs Node APIs unavailable on
+  "NodeJs"`) since `@react-pdf/renderer` needs Node APIs unavailable on
   Edge.
 # Portfolio
 # Portfolio
