@@ -64,7 +64,7 @@ const defaultResume: ResumeData = {
       category: "Core Skills",
       items: [
         "Spring Boot",
-        "Express",
+        "NodeJS",
         "ReactJS",
         "React Native",
         "Flutter",
@@ -88,6 +88,7 @@ const defaultResume: ResumeData = {
       role: "Backend + Frontend",
       period: "May 2026 – Present",
       location: "Hà Nội, Việt Nam",
+      githubUrl: "https://github.com/ThaiDuisss/Huong-Van-Tra-",
       url: "/projects/huong-van-tra",
       achievements: [
         "Developed a Microservices-based Tea Chain Management and POS Sales System supporting real-time order processing, Bill of Materials (BOM) management, inventory control, and revenue reporting across multiple branches.",
