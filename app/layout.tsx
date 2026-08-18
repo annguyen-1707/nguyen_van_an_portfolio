@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Resume",
+  title: "NguyenVanAn_Portfolio",
   description: "Web and PDF resume preview, rendered from a single data source.",
 };
 
