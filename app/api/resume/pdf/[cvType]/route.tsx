@@ -21,7 +21,9 @@ export function generateStaticParams() {
 
 const SITE_ORIGIN = (
   process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : "https://nguyen-van-an-portfolio.vercel.app")
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://nguyen-van-an-portfolio.vercel.app")
 ).replace(/\/$/, "");
 
 function removeDiacritics(str: string): string {
