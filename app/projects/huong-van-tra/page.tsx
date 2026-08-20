@@ -33,7 +33,6 @@ export default function HuongVanTraPage() {
         "Spring Boot",
         "Spring Cloud",
         "Spring Security",
-        "Keycloak",
         "OAuth2",
         "MySQL",
         "Kafka",
