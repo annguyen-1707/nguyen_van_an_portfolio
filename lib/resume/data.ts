@@ -33,17 +33,18 @@ const defaultResume: ResumeData = {
       startDate: "July 2025",
       endDate: "January 2026",
       achievements: [
-        "Participated in developing the Hospital Canteen Management System, including authentication, authorization, and user/department management features, while also improving the UI of the D-office mobile HR management application.",
+        "Participated in developing the Hospital Canteen Management System, including authentication, authorization, and user/department management features, while also developing RESTful APIs for the D-office web application.",
       ],
       projects: [
         {
-          name: "D-office Mobile Application",
-          role: "Mobile Developer",
+          name: "D-office Web Application",
+          role: "Backend Developer",
           period: "July 2025 – January 2026",
-          link: "https://play.google.com/store/apps/details?id=udsjsc.doffice",
+          link: "https://office.uds.com.vn",
           achievements: [
-            "Developed and redesigned mobile UI based on Figma designs using React Native.",
-            "Implemented screens for attendance, leave requests, tasks, and employee information management.",
+            "Developed and maintained RESTful APIs for the D-office project.",
+            "Investigated and fixed bugs to improve system stability and functionality.",
+            "Performed API testing, debugging, and validation to ensure features met project requirements.",
           ],
         },
         {
