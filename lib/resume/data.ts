@@ -91,7 +91,7 @@ const defaultResume: ResumeData = {
     },
     {
       category: "Tools/DevOps",
-      items: ["Git", "Maven/Gradle", "Docker", "Postman", "Swagger", "Keycloak"],
+      items: ["Git", "Maven/Gradle", "Docker", "Postman", "Swagger"],
     },
   ],
   projects: [
