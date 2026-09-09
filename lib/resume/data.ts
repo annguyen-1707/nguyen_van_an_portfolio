@@ -31,7 +31,7 @@ const defaultResume: ResumeData = {
       position: "Fullstack Developer",
       location: "Hà Nội, Việt Nam",
       startDate: "July 2025",
-      endDate: "July 2026",
+      endDate: "Dec 2025",
       projects: [
         {
           name: "D-office Web Application",
