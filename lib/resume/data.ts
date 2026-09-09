@@ -145,7 +145,21 @@ export const resumes: Record<string, ResumeData> = {
 
 export const resumeData = resumes.default;
 
-/** Finds a top-level project by title. */
-export function findProject(title: string) {
-  return resumeData.projects.find((p) => p.title === title) ?? null;
+/** Finds a top-level project by title, URL, or slug. */
+export function findProject(query: string) {
+  const q = query.trim().toLowerCase();
+  return (
+    resumeData.projects.find((p) => {
+      const title = p.title.trim().toLowerCase();
+      const url = (p.url || "").trim().toLowerCase();
+      return (
+        title === q ||
+        title.startsWith(q) ||
+        q.startsWith(title) ||
+        url === q ||
+        url.endsWith(`/${q}`) ||
+        url.includes(q)
+      );
+    }) ?? null
+  );
 }

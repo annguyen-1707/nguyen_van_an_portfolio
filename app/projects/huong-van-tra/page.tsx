@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function HuongVanTraPage() {
-  const project = findProject(PROJECT_TITLE);
+  const project = findProject("huong-van-tra") || findProject(PROJECT_TITLE);
   if (!project) notFound();
 
   const actions = [
