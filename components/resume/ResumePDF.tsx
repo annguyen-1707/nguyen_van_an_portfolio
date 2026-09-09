@@ -78,20 +78,21 @@ const ExternalLinkIcon = () => (
 
 const styles = StyleSheet.create({
   page: {
-    padding: 24,
+    paddingVertical: 14,
+    paddingHorizontal: 20,
     fontSize: 11,
     fontFamily: "Roboto",
     backgroundColor: "#ffffff",
   },
   header: {
     alignItems: "center",
-    marginBottom: 4,
+    marginBottom: 2,
   },
   name: {
     fontSize: 22,
     fontWeight: "bold",
     color: "#000000",
-    marginBottom: 4,
+    marginBottom: 2,
     textAlign: "center",
   },
   contactRow: {
@@ -130,18 +131,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   section: {
-    marginTop: 4,
-    marginBottom: 2,
+    marginTop: 2.5,
+    marginBottom: 1,
   },
   sectionTitle: {
     fontSize: 12,
     fontWeight: "bold",
     color: "#000000",
-    marginBottom: 3,
+    marginBottom: 1.5,
     textTransform: "uppercase",
     borderBottomWidth: 1,
     borderBottomColor: "#000000",
-    paddingBottom: 1,
+    paddingBottom: 0.5,
     letterSpacing: 1,
   },
   educationItem: {
@@ -173,12 +174,12 @@ const styles = StyleSheet.create({
     color: "#000000",
   },
   experienceItem: {
-    marginBottom: 2,
+    marginBottom: 1.5,
   },
   experienceHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 1,
+    marginBottom: 0.5,
   },
   dateRange: {
     fontSize: 10,
@@ -188,15 +189,15 @@ const styles = StyleSheet.create({
   companyRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 2,
+    marginBottom: 1,
   },
   bulletList: {
     marginLeft: 8,
-    marginTop: 2,
+    marginTop: 1,
   },
   bulletItem: {
     flexDirection: "row",
-    marginBottom: 1,
+    marginBottom: 0.5,
   },
   bullet: {
     fontSize: 10,
@@ -206,14 +207,15 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "#000000",
     flex: 1,
+    lineHeight: 1.2,
   },
   projectItem: {
-    marginBottom: 2,
+    marginBottom: 1.5,
   },
   projectHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 1,
+    marginBottom: 0.5,
   },
   projectName: {
     fontSize: 11,
@@ -221,7 +223,7 @@ const styles = StyleSheet.create({
     color: "#000000",
   },
   skillsContainer: {
-    marginTop: 2,
+    marginTop: 1,
   },
   skillCategory: {
     fontSize: 10,
@@ -235,11 +237,11 @@ const styles = StyleSheet.create({
   profilesContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    marginTop: 2,
+    marginTop: 1,
   },
   profileColumn: {
     width: "33.33%",
-    marginBottom: 2,
+    marginBottom: 1,
   },
   profileItem: {
     flexDirection: "row",
@@ -260,7 +262,7 @@ const styles = StyleSheet.create({
   },
   achievementItem: {
     flexDirection: "row",
-    marginBottom: 2,
+    marginBottom: 1,
     marginLeft: 8,
   },
   achievementBullet: {
@@ -271,11 +273,13 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "#000000",
     flex: 1,
+    lineHeight: 1.2,
   },
   certificationText: {
     fontSize: 10,
     color: "#000000",
-    marginBottom: 2,
+    marginBottom: 1,
+    lineHeight: 1.2,
   },
 });
 
@@ -368,7 +372,7 @@ const ResumePDF = ({ data, type = "default", origin = "" }: ResumePDFProps) => (
       {data.summary && (
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Summary</Text>
-          <Text style={{ fontSize: 10, color: "#000000", lineHeight: 1.4 }}>{data.summary}</Text>
+          <Text style={{ fontSize: 10, color: "#000000", lineHeight: 1.2 }}>{data.summary}</Text>
         </View>
       )}
 
@@ -377,7 +381,7 @@ const ResumePDF = ({ data, type = "default", origin = "" }: ResumePDFProps) => (
         <Text style={styles.sectionTitle}>Skills</Text>
         <View style={styles.skillsContainer}>
           {data.skills.map((skillCategory, index) => (
-            <View key={index} style={{ marginBottom: 2 }}>
+            <View key={index} style={{ marginBottom: 1 }}>
               <Text>
                 <Text style={styles.skillCategory}>{skillCategory.category}: </Text>
                 <Text style={styles.skillItems}>{skillCategory.items.join(", ")}</Text>
@@ -434,7 +438,7 @@ const ResumePDF = ({ data, type = "default", origin = "" }: ResumePDFProps) => (
                 );
 
                 return (
-                  <View key={pIdx} style={{ marginTop: 3 }}>
+                  <View key={pIdx} style={{ marginTop: 1.5 }}>
                     <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                       {formattedUrl ? (
                         <Link src={formattedUrl} style={{ textDecoration: "none" }}>
@@ -448,7 +452,7 @@ const ResumePDF = ({ data, type = "default", origin = "" }: ResumePDFProps) => (
                       )}
                       <Text style={{ fontSize: 9, color: "#666" }}>{project.period}</Text>
                     </View>
-                    <Text style={{ fontSize: 9, color: "#0066cc", marginBottom: 1 }}>
+                    <Text style={{ fontSize: 9, color: "#000000", marginBottom: 1 }}>
                       {project.role} {project.techStack?.length ? `| Tech: ${project.techStack.join(", ")}` : ""}
                     </Text>
                     <View style={styles.bulletList}>
@@ -510,7 +514,7 @@ const ResumePDF = ({ data, type = "default", origin = "" }: ResumePDFProps) => (
                 </Text>
               </View>
               {project.role && (
-                <View style={{ marginBottom: 2 }}>
+                <View style={{ marginBottom: 1 }}>
                   <Text style={{ fontSize: 10, fontStyle: "italic", color: "#000000" }}>{project.role}</Text>
                 </View>
               )}
@@ -543,8 +547,21 @@ const ResumePDF = ({ data, type = "default", origin = "" }: ResumePDFProps) => (
         })}
       </View>
 
-      {/* Education Section */}
-      <View style={styles.section}>
+      {/* Languages Section - End of Page 1 */}
+      {data.languages && data.languages.length > 0 && (
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Languages</Text>
+          {data.languages.map((lang, index) => (
+            <View key={index} style={styles.bulletItem}>
+              <Text style={styles.bullet}>•</Text>
+              <Text style={styles.bulletText}>{lang}</Text>
+            </View>
+          ))}
+        </View>
+      )}
+
+      {/* Education Section - Page 2 */}
+      <View break style={styles.section}>
         <Text style={styles.sectionTitle}>Education</Text>
         {data.education.map((edu, index) => (
           <View key={index} style={styles.educationItem}>

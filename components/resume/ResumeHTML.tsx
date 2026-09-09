@@ -215,7 +215,7 @@ export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {
                       {project.period && <span className="text-[11px] text-gray-500">{project.period}</span>}
                     </div>
                     {project.role && (
-                      <div className="text-[11px] text-blue-600 mb-0.5">
+                      <div className="text-[11px] text-gray-600 mb-0.5">
                         {project.role} {project.techStack?.length ? `| Tech: ${project.techStack.join(", ")}` : ""}
                       </div>
                     )}
@@ -320,6 +320,23 @@ export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {
         })}
       </section>
 
+      {/* Languages Section */}
+      {data.languages && data.languages.length > 0 && (
+        <section className="mb-4">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-gray-900 border-b border-gray-900 pb-1 mb-2">
+            Languages
+          </h2>
+          <div className="text-xs text-gray-800 space-y-0.5">
+            {data.languages.map((lang, index) => (
+              <div key={index} className="flex items-center ml-2">
+                <span className="mr-1.5 select-none text-gray-800">•</span>
+                <span>{lang}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Education Section */}
       <section className="mb-4">
         <h2 className="text-xs font-bold uppercase tracking-wider text-gray-900 border-b border-gray-900 pb-1 mb-2">
@@ -389,11 +406,11 @@ export default function ResumeHTML({ data, origin = "" }: ResumeHTMLProps) {
 
       {/* Certifications Section */}
       {data.certifications && data.certifications.length > 0 && (
-        <section className="mb-4">
+        <section>
           <h2 className="text-xs font-bold uppercase tracking-wider text-gray-900 border-b border-gray-900 pb-1 mb-2">
             Certifications
           </h2>
-          <ul className="list-disc list-inside ml-2 text-xs text-gray-800 space-y-0.5">
+          <ul className="list-disc list-inside ml-2 text-xs text-gray-800 space-y-1">
             {data.certifications.map((cert, index) => (
               <li key={index}>{cert}</li>
             ))}

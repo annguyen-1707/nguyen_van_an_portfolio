@@ -13,7 +13,7 @@ const defaultResume: ResumeData = {
     website: null,
   },
   summary:
-    "Software Engineering senior passionate about building scalable web applications and learning across the fullstack ecosystem. Experienced with backend development using Spring Boot and frontend/mobile development using ReactJS and React Native. Interested in modern web technologies, AI integration, and product-oriented engineering. Eager to contribute, learn quickly, and adapt in fast-paced startup environments.",
+    "Software Engineering senior passionate about building scalable web applications with Spring Boot, ReactJS, and React Native. Experienced in backend, frontend, and mobile development, with a strong interest in modern web tech, AI integration, and fast-paced startup environments.",
   education: [
     {
       institution: "FPT University",
@@ -28,32 +28,31 @@ const defaultResume: ResumeData = {
   experience: [
     {
       company: "Công ty CP Đầu tư Công nghệ Hoàng Huy",
-      position: "Developer",
+      position: "Fullstack Developer",
       location: "Hà Nội, Việt Nam",
       startDate: "July 2025",
-      endDate: "January 2026",
-      achievements: [
-        "Participated in developing the Hospital Canteen Management System, including authentication, authorization, and user/department management features, while also developing RESTful APIs for the D-office web application.",
-      ],
+      endDate: "July 2026",
       projects: [
         {
           name: "D-office Web Application",
-          role: "Backend Developer",
-          period: "July 2025 – January 2026",
+          role: "Fullstack Developer",
+          period: "July 2025 – Dec 2026",
           link: "https://office.uds.com.vn",
           achievements: [
-            "Developed and maintained RESTful APIs for the D-office project.",
-            "Investigated and fixed bugs to improve system stability and functionality.",
-            "Performed API testing, debugging, and validation to ensure features met project requirements.",
+            "Built backend micro-features and RESTful APIs using Spring Boot (Java 17) with Spring Security and JWT for employee check-in and authentication.",
+            "Implemented complex attendance business logic: work-hour computation, multi-shift scheduling, location geofencing validation, and handling edge cases like duplicate punches or out-of-frame time records.",
+            "Designed schema collections and query structures in MongoDB (Spring Data MongoDB) to efficiently store and query high-frequency timesheet audit logs.",
+            "Developed cross-platform mobile check-in screens, personal dashboards, and shift calendar views using React Native and TypeScript with offline caching mechanisms.",
           ],
         },
         {
           name: "Hospital Canteen Management System",
-          role: "Backend + Frontend",
-          period: "July 2025 – January 2026",
+          role: "Fullstack Developer",
+          period: "January 2026 – July 2027",
           achievements: [
-            "Developed QR code scanning and ticket printing workflow.",
-            "Built frontend interfaces for meal management and scan history tracking.",
+            "Built automated workflows for QR code scanning, ticket printing, and real-time meal slip generation, including hardware integration to manage and communicate with paired scanners and printers via Serial Port (COM Port) connections.",
+            "Implemented dynamic meal configuration features that automatically compute eligible meal dates by subtracting weekends and national holidays.",
+            "Designed and implemented responsive frontend interfaces for meal management, scan history tracking",
           ],
         },
       ],
@@ -85,6 +84,10 @@ const defaultResume: ResumeData = {
       category: "Front-end stack",
       items: ["React", "JavaScript", "TypeScript", "HTML/CSS", "Bootstrap"],
     },
+    // {
+    //   category: "Mobile stack",
+    //   items: ["React-Native", "Flutter"],
+    // },
     {
       category: "Database",
       items: ["MySQL", "Oracle", "SQL Server", "MongoDB (basic)", "Redis"],
@@ -96,8 +99,8 @@ const defaultResume: ResumeData = {
   ],
   projects: [
     {
-      title: "Hương Vân Trà",
-      role: "Backend + Frontend",
+      title: "Hương Vân Trà – Client Project ",
+      role: "Fullstack Developer",
       period: "May 2026 – Present",
       location: "Hà Nội, Việt Nam",
       githubUrl: "https://github.com/ThaiDuisss/Huong-Van-Tra-",
@@ -112,8 +115,8 @@ const defaultResume: ResumeData = {
     },
     {
       title: "Personalized Japanese Learning System (FU OHAYO)",
-      role: "Backend + Frontend",
-      period: "May 2025 – September 2025",
+      role: "Fullstack Developer",
+      period: "March 2025 – July 2025",
       githubUrl: "https://github.com/annguyen-1707/Personalized-Learning-System",
       url: "/projects/fu-ohayo",
       achievements: [
@@ -125,6 +128,7 @@ const defaultResume: ResumeData = {
       ],
     },
   ],
+  languages: ["TOEIC - 550"],
   codingProfiles: [],
   certifications: [
     "Project Management Principles and Practices Specialization – University of California, Irvine (01/2026)",
