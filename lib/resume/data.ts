@@ -13,7 +13,7 @@ const defaultResume: ResumeData = {
     website: null,
   },
   summary:
-    "Software Engineering senior passionate about building scalable web applications with Spring Boot, ReactJS, and React Native. Experienced in backend, frontend, and mobile development, with a strong interest in modern web tech, AI integration, and fast-paced startup environments.",
+    "Final-year Software Engineering student with 1 year of hands-on experience in backend, frontend, and mobile development. Experienced in building scalable applications with Spring Boot, ReactJS, and React Native. Experienced in backend, frontend, and mobile development, with a strong interest in modern web tech, AI integration, and fast-paced startup environments.",
   education: [
     {
       institution: "FPT University",
@@ -33,6 +33,16 @@ const defaultResume: ResumeData = {
       startDate: "July 2025",
       endDate: "Dec 2025",
       projects: [
+         {
+          name: "Hospital Canteen Management System",
+          role: "Fullstack Developer",
+          period: "January 2026 – July 2026",
+          achievements: [
+            "Built automated workflows for QR code scanning, ticket printing, and real-time meal slip generation, including hardware integration to manage and communicate with paired scanners and printers via Serial Port (COM Port) connections.",
+            "Implemented dynamic meal configuration features that automatically compute eligible meal dates by subtracting weekends and national holidays.",
+            "Designed and implemented responsive frontend interfaces for meal management, scan history tracking",
+          ],
+        },
         {
           name: "D-office Web Application",
           role: "Fullstack Developer",
@@ -43,16 +53,6 @@ const defaultResume: ResumeData = {
             "Implemented complex attendance business logic: work-hour computation, multi-shift scheduling, location geofencing validation, and handling edge cases like duplicate punches or out-of-frame time records.",
             "Designed schema collections and query structures in MongoDB (Spring Data MongoDB) to efficiently store and query high-frequency timesheet audit logs.",
             "Developed cross-platform mobile check-in screens, personal dashboards, and shift calendar views using React Native and TypeScript with offline caching mechanisms.",
-          ],
-        },
-        {
-          name: "Hospital Canteen Management System",
-          role: "Fullstack Developer",
-          period: "January 2026 – July 2026",
-          achievements: [
-            "Built automated workflows for QR code scanning, ticket printing, and real-time meal slip generation, including hardware integration to manage and communicate with paired scanners and printers via Serial Port (COM Port) connections.",
-            "Implemented dynamic meal configuration features that automatically compute eligible meal dates by subtracting weekends and national holidays.",
-            "Designed and implemented responsive frontend interfaces for meal management, scan history tracking",
           ],
         },
       ],
