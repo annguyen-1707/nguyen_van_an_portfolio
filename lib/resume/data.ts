@@ -36,7 +36,7 @@ const defaultResume: ResumeData = {
         {
           name: "D-office Web Application",
           role: "Fullstack Developer",
-          period: "July 2025 – July 2025",
+          period: "July 2025 – Dec 2025",
           link: "https://office.uds.com.vn",
           achievements: [
             "Built backend micro-features and RESTful APIs using Spring Boot (Java 17) with Spring Security and JWT for employee check-in and authentication.",
