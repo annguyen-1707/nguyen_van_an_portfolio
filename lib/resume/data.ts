@@ -36,7 +36,7 @@ const defaultResume: ResumeData = {
         {
           name: "D-office Web Application",
           role: "Fullstack Developer",
-          period: "July 2025 – Dec 2026",
+          period: "July 2025 – July 2025",
           link: "https://office.uds.com.vn",
           achievements: [
             "Built backend micro-features and RESTful APIs using Spring Boot (Java 17) with Spring Security and JWT for employee check-in and authentication.",
@@ -48,7 +48,7 @@ const defaultResume: ResumeData = {
         {
           name: "Hospital Canteen Management System",
           role: "Fullstack Developer",
-          period: "January 2026 – July 2027",
+          period: "January 2026 – July 2026",
           achievements: [
             "Built automated workflows for QR code scanning, ticket printing, and real-time meal slip generation, including hardware integration to manage and communicate with paired scanners and printers via Serial Port (COM Port) connections.",
             "Implemented dynamic meal configuration features that automatically compute eligible meal dates by subtracting weekends and national holidays.",
