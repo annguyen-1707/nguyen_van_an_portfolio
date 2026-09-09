@@ -64,7 +64,7 @@ const defaultResume: ResumeData = {
       items: [
         "Java",
         "Spring Boot",
-        "Multithreading",
+        // "Multithreading",
         // "Spring WebFlux",
         "Spring Security",
         "Spring Data JPA",
